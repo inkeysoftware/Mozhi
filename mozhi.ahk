@@ -3,9 +3,9 @@
 
 	Keyboard:	Mozhi
 	Version:    1.0
-	Author:     
+	Author:     InKey Software
 	Official Distribution: http://inkeysoftware.com
-
+	InKey Tutorial Page: http://inkeysoftware.com/tutorial
 */
 
 ;________________________________________________________________________________________________________________
