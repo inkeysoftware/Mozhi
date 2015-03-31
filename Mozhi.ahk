@@ -5,7 +5,7 @@
 	Version:    1.0
 	Author:     
 	Official Distribution: http://inkeysoftware.com
-
+	InKey Tutorial: http://inkeysoftware.com/tutorial
 */
 
 ;________________________________________________________________________________________________________________
