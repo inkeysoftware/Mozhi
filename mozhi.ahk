@@ -76,9 +76,6 @@ $l::InCase(Map("ൽ ല്ല്", "@ ൢ", "ൾ ഌ ൡ"))  ; "് ൢ ൣ",
   ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൽ"))
   ||Send("ല്")
 
-
-
-
 $b::Send("ബ്")
 
 $c::Send("ക്" DeadKey(1))  ;  ("ച്")
