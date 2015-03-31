@@ -5,7 +5,7 @@
 	Version:    1.0
 	Author:     test user
 	Official Distribution: http://inkeysoftware.com
-	Tutorial: http://inkeysoftware.com/tutorial
+	InKey Tutorial: http://inkeysoftware.com/tutorial
 */
 
 ;________________________________________________________________________________________________________________
