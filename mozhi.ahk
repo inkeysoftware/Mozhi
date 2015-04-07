@@ -6,6 +6,7 @@
 	Author:     InKey Software
 	Official Distribution: http://inkeysoftware.com
 	InKey Tutorial Page: http://inkeysoftware.com/tutorial
+
 */
 
 ;________________________________________________________________________________________________________________
@@ -71,17 +72,22 @@ $+u::InCase(Replace("$F") with("$Rൂ") usingMap("ൻ ന", "ൺ ണ", "ർ ര"
 $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"))
   ||InCase(Map("് ൃ ൄ", "@ ൃ", "ഋ ൠ") elseSend("ഋ"))
   
-$l::InCase(Map("ൽ ല്ല്", "@ ൢ", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
+$l::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ല്")) ; After cons (except SA)
+  ||InCase(Map("ൽ ല്ല്", "@ ൢ", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
   ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"))
   ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൽ"))
   ||Send("ല്")
+
+$+l::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ല്")) ; After cons (except SA)
+  ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൾ"))
+  ||Send("ള്")
 
 
 
 
 $b::Send("ബ്")
 
-$c::Send("ക്") && SetPhase(1) 
+$c::Send("ൿ")
 
 $d::Send("ദ്")
 
@@ -89,8 +95,7 @@ $f::Send("ഫ്")
 
 $g::InCase(Map("ൻ ങ്", "ന് ങ്") elseSend("ഗ്"))
 
-$h::IsPhase(1) && InCase(Map("ക് ച്"))
-  ||InCase(Map("ക് ഖ്", "ഗ് ഘ്", "ച് ഛ്", "ജ് ഝ്", "ട് ഠ്", "ഡ് ഢ്", "റ്റ് ത് ഥ്", "ദ് ധ്", "പ് ഫ്", "ബ് ഭ്", "സ് ഷ്", "ശ് ഴ്"))
+$h::InCase(Map("ൿ ച്", "ക് ഖ്", "ഗ് ഘ്", "ച് ഛ്", "ജ് ഝ്", "ട് ഠ്", "ഡ് ഢ്", "റ്റ് ത് ഥ്", "ദ് ധ്", "പ് ഫ്", "ബ് ഭ്", "സ് ഷ്", "ശ് ഴ്"))
   ||Send("ഹ്")
 
 $j::InCase(Map("ൻ ഞ്", "ന് ഞ്") elseSend("ജ്"))
@@ -101,7 +106,8 @@ $m::InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ം"))
   ||InCase(Map("ം മ്മ്"))
   ||Send("മ്")
 
-$n::InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൻ"))
+$n::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ന്")) ; After cons (except SA)
+  ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൻ"))
   ||Send("ന്")
 
 $p::InCase(Map("ം മ്പ്"))
@@ -109,7 +115,8 @@ $p::InCase(Map("ം മ്പ്"))
 
 $q::Send("ക്ക്")
 
-$r::InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ർ"))
+$r::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ര്")) ; After cons (except SA)
+  ||InCase(After("[ംഅ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ർ"))
   ||Send("ര്")
 
 $s::Send("സ്")
@@ -122,7 +129,8 @@ $w::Send("വ്")
 
 $x::Send("ക്ഷ്")
 
-$y::Send("യ്")
+$y::InCase(After("[അ-ഷഹാ-ൌൗൢൣ]") Replace("ം") with("മ്യ്")) ; After cons (except SA) or vowel signs
+  ||Send("യ്")
 
 $z::Send("ശ്")
 
@@ -142,9 +150,6 @@ $+h::Send("ഃ")
 $+j::Send("ജ്ജ്")
 
 $+k::Send("ക്ക്")
-
-$+l::InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൾ"))
-  ||Send("ള്")
 
 $+m::Send("മ്മ്")
 
