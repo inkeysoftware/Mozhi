@@ -130,6 +130,7 @@ $q::Send("ക്ക്")
 $r::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ര്")) ; After cons (except SA)
   ||InCase(After("ൻ") Replace(char(0x200c)) with("ര്"))
   ||InCase(After("ർ") Replace(char(0x200c)) with("റ്"))
+;  ||InCase(After("്") thenSend("്ര"))
   ||Send("ർ")
 
 $s::Send("സ്")
