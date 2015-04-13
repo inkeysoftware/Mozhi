@@ -66,15 +66,15 @@ $+i::InCase(Replace("$F") with("$Rീ") usingMap("ൻ ന", "ൺ ണ", "ർ ര"
 $+o::InCase(Replace("$F") with("$Rോ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(Map("് ോ", "@ ോ") elseSend("ഓ")) 
 
-$+u::InCase(Replace("$F") with("$Rൂ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"), "ം മ")
+$+u::InCase(Replace("$F") with("$Rൂ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(Map("് ൂ", "@ ൂ") elseSend("ഊ"))
 
-$+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"), "ം മ")
+$+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(Map("് ൃ ൄ", "@ ൃ", "ഋ ൠ") elseSend("ഋ"))
   
-$l::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ല്")) ; After cons (except SA)
+$l::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ല്"))  ; After cons (except SA)
   ||InCase(Map("ൽ ല്ല്", "@ ൢ", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
-  ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"), "ം മ")
+  ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൽ"))
   ||Send("ല്")
 
@@ -96,7 +96,7 @@ $f::Send("ഫ്")
 
 $g::InCase(Map("ൻ ങ്", "ന് ങ്") elseSend("ഗ്"))
 
-$h::InCase(Map("ൿ ച്", "ക് ഖ്", "ഗ് ഘ്", "ച് ഛ്", "ജ് ഝ്", "ട് ഠ്", "ഡ് ഢ്", "റ്റ് ത് ഥ്", "ദ് ധ്", "പ് ഫ്", "ബ് ഭ്", "സ് ഷ്", "ശ് ഴ്"))
+$h::InCase(Map("ൻൿ ഞ്ച്", "ൿ ച്", "ക് ഖ്", "ക്ക് ച്ച്", "ഗ് ഘ്", "ച് ഛ്", "ജ് ഝ്", "ട് ഠ്", "ഡ് ഢ്", "റ്റ് ത് ഥ്", "ദ് ധ്", "പ് ഫ്", "ബ് ഭ്", "സ് ഷ്", "ശ് ഴ്"))
   ||Send("ഹ്")
 
 $j::InCase(Map("ൻ ഞ്", "ന് ഞ്") elseSend("ജ്"))
@@ -123,7 +123,7 @@ $r::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ര്")) ; After co
 
 $s::Send("സ്")
 
-$t::InCase(Replace("റ്റ്") with("ട്ട്"))
+$t::InCase(Map("റ്റ് ട്ട്", "ൻ ന്റ്", "ന് ന്റ്"))
   ||Send("റ്റ്")
 
 $v::Send("വ്")
@@ -133,6 +133,7 @@ $w::Send("വ്")
 $x::Send("ക്ഷ്")
 
 $y::InCase(After("[അ-ഷഹാ-ൌൗൢൣ]") Replace("ം") with("മ്യ്")) ; After cons (except SA) or vowel signs
+  ||InCase(Replace("$F") with("$R്യ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||Send("യ്")
 
 $z::Send("ശ്")
