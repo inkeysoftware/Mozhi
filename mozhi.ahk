@@ -22,11 +22,18 @@ K_MinimumInKeyLibVersion = 1.912
 K_UseContext = 2  ; Causes uncaptured character keys to be included in the context too. CAPS-sensitive.
 
 #include InKeyLib.ahki
+
+;--------------------------------
+OnLoadScript:	; InKeyLib will call this subroutine just once, when the script is first loaded, for any script initialization.
+
+MapBaseToChillu = Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്") 
+return
 ;________________________________________________________________________________________________________________
 
 $_::InCase(Map("ക് ൿ", "ക ൿ") elseSend(Char(0x200C))) ; Is this all the underscore does? (At least according to the KMN. There are other uses listed in the Layout image, but I think it actually refers to the old sequence for the Cillu)
 
-$~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്"))
+;$~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്"))
+$~::InCase(MapBaseToChillu)
   ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("്"))
   ||Beep()
   
@@ -75,7 +82,7 @@ $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര"
 $l::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ല്"))  ; After cons (except SA)
   ||InCase(Map("ൽ ല്ല്", "@ ൢ", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
   ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
-  ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൽ"))
+/*  ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൽ")) */
   ||Send("ല്")
 
 $+l::InCase(After("[അ-ഷഹ]") Replace("ം") with("മ്ല്")) ; After cons (except SA)
