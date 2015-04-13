@@ -24,7 +24,7 @@ K_UseContext = 2  ; Causes uncaptured character keys to be included in the conte
 #include InKeyLib.ahki
 ;________________________________________________________________________________________________________________
 
-$_::InCase(Map("ക് ൿ", "ക ൿ") elseSend(Char(0x200C))) ; Is this all the underscore does?
+$_::InCase(Map("ക് ൿ", "ക ൿ") elseSend(Char(0x200C))) ; Is this all the underscore does? (At least according to the KMN. There are other uses listed in the Layout image, but I think it actually refers to the old sequence for the Cillu)
 
 $~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്"))
   ||InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("്"))
