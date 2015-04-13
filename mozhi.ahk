@@ -43,30 +43,30 @@ $a::InCase(Map("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക",
 
 $+a::InCase(Map("് ാ", "ഋ റാ","@ ാ") elseSend("ആ"))
 
-$e::InCase(Replace("$F") with("$Rെ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$e::InCase(Replace("$F") with("$Rെ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Map("് െ ീ", "എ ഈ", "@ െ") elseSend("എ"))
 
-$i::InCase(Replace("$F") with("$Rി") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$i::InCase(Replace("$F") with("$Rി") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൈ"))
   ||InCase(Map("് ി ീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ") elseSend("ഇ"))   
 
-$o::InCase(Replace("$F") with("$Rൊ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$o::InCase(Replace("$F") with("$Rൊ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Map("് ൊ ൂ", "ഒ ഊ", "@ ൊ") elseSend("ഒ"))  
 
-$u::InCase(Replace("$F") with("$Rു") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$u::InCase(Replace("$F") with("$Rു") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൗ"))  ; KMN uses 0d4c instead
   ||InCase(Map("് ു ൂ", "ഉ ഊ", "അ ഔ", "ഒ ഔ", "@ ു", "ാ ൗ") elseSend("ഉ"))
 
-$+e::InCase(Replace("$F") with("$Rേ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$+e::InCase(Replace("$F") with("$Rേ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Map("് േ", "@ േ") elseSend("ഏ")) 
 
-$+i::InCase(Replace("$F") with("$Rീ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$+i::InCase(Replace("$F") with("$Rീ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Map("് ീ", "@ ീ") elseSend("ഐ")) 
 
-$+o::InCase(Replace("$F") with("$Rോ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$+o::InCase(Replace("$F") with("$Rോ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Map("് ോ", "@ ോ") elseSend("ഓ")) 
 
-$+u::InCase(Replace("$F") with("$Rൂ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
+$+u::InCase(Replace("$F") with("$Rൂ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Map("് ൂ", "@ ൂ") elseSend("ഊ"))
 
 $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
@@ -158,6 +158,7 @@ $+k::Send("ക്ക്")
 $+m::Send("മ്മ്")
 
 $+n::InCase(After("[അ-ഹഺാ-ൌൗൠ-ൣ]") thenSend("ൺ"))
+  ||InCase(Replace("ൺ") with("ണ്ണ്"))
   ||Send("ണ്")
 
 $+p::Send("പ്പ്")
