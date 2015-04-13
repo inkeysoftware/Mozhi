@@ -143,7 +143,7 @@ $+b::Send("ബ്ബ്")
 
 $+c::Send("ച്ച്")
 
-$+d::Send("ഡ്")
+$+d::InCase(Map("ൺ ണ്ഡ്") elseSend("ഡ്"))
 
 $+f::Send("ഫ്")
 
