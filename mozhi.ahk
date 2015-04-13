@@ -35,7 +35,7 @@ $/::InCase(Replace("/") with("ഽ") elseSend("/"))
 $^::InCase(Map("ൻ ൹", "10 ൰", "100 ൱", "1000 ൲", "1/4 ൳", "1/2 ൴", "3/4 ൵") elseSend("^"))
 
 
-$a::InCase(Map("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ഋ റ"))
+$a::InCase(Map("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Replace("്") with("$1")) ; workaround for InKey bug that doesn't like empty strings
   ||InCase(After("[ക-ഹ]") thenSend("ാ"))
   ||InCase(After("‍ാ") thenSend("‍ാ"))  ; attempts to allow multiple occurrences, but may render badly
@@ -46,11 +46,11 @@ $+a::InCase(Map("് ാ", "ഋ റാ","@ ാ") elseSend("ആ"))
 $e::InCase(Replace("$F") with("$Rെ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(Map("് െ ീ", "എ ഈ", "@ െ") elseSend("എ"))
 
-$i::InCase(Replace("$F") with("$Rി") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"))
+$i::InCase(Replace("$F") with("$Rി") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൈ"))
   ||InCase(Map("് ി ീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ") elseSend("ഇ"))   
 
-$o::InCase(Replace("$F") with("$Rൊ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"))
+$o::InCase(Replace("$F") with("$Rൊ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(Map("് ൊ ൂ", "ഒ ഊ", "@ ൊ") elseSend("ഒ"))  
 
 $u::InCase(Replace("$F") with("$Rു") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
