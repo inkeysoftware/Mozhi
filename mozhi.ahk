@@ -119,13 +119,13 @@ $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര"
   ||InCase(Map("് ൃ ൄ", "@ ൃ", "ഋ ൠ"))
   ||Send("ഋ")
   
-$l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്"))  ; After cons (except SA)
+$l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്"))  
   ||InCase(After("[ൽൾൿ]") Replace(ZWNJ) with("ല്"))
   ||InCase(Map("ൽ ല്ല്", "@ ൢ", "ൿ ക്ല്", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
   ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ം മ"))
   ||Send("ൽ")
 
-$+l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്")) ; After cons (except SA)
+$+l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്")) 
   ||InCase(After("[ൻൽൾൿ]") Replace(ZWNJ) with("ല്"))
   ||InCase(Map("ൾ ള്ള്", "ൻ ന്ല്", "ൽ ല്ല്", "ൿ ക്ല്")) 
   ||Send("ൾ")
@@ -164,7 +164,7 @@ $m::InCase(After(SetOfRegularLettersAndVowelSigns) thenSend("ം"))
   ||InCase(Map("ം മ്മ്", "ൺ ണ്മ്", "ൻ ന്മ്"))
   ||Send("മ്")
 
-$n::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ന്")) ; After cons (except SA)
+$n::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ന്")) 
   ||InCase(After("ൻ") Replace(ZWNJ) with("ന്"))
   ||Incase(Replace("ൻ") with("ന്ന്"))
   ||Send("ൻ")
@@ -175,11 +175,10 @@ $p::InCase(Map("ം മ്പ്", "ൽ ല്പ്"))
 
 $q::Send("ക്ക്")
 
-$r::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ര്")) ; After cons (except SA)
+$r::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ര്")) 
   ||InCase(After("ൻ") Replace(ZWNJ) with("ര്"))
   ||InCase(After("ർ") Replace(ZWNJ) with("റ്"))
   ||InCase(Map("ൻ ന്ര്", "ർ റ്"))
-;  ||InCase(After("്") thenSend("്ര"))
   ||Send("ർ")
 
 $s::Send("സ്")
@@ -222,8 +221,7 @@ $+k::Send("ക്ക്")
 
 $+m::Send("മ്മ്") 
 
-$+n::InCase(After(SetOfRegularLettersAndVowelSigns) thenSend("ൺ"))
-  ||InCase(After("ൺ") Replace(ZWNJ) with("ണ്"))
+$+n::InCase(After("ൺ") Replace(ZWNJ) with("ണ്"))
   ||InCase(Replace("ൺ") with("ണ്ണ്"))
   ||Send("ൺ")
 
