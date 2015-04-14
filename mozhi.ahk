@@ -46,7 +46,7 @@ $-::InCase(Map("\ −"))
 $*::InCase(Map("\ ×"))
   ||Send("*")
   
-$/::InCase(Map("\ ÷", "/ ഽ")) ;InCase(Replace("\") with("÷"))
+$/::InCase(Map("\ ÷", "/ ഽ")) 
   ||Send("/")
 
 ;The following rule is switch between Atomic and Sequence Chillu Characters
