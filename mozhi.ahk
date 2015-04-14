@@ -40,11 +40,19 @@ $~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള�
   ||InCase(After(SetOfRegularLettersAndVowelSigns) thenSend("്"))
   ||Beep()
   
-$/::InCase(Replace("/") with("ഽ") elseSend("/"))
+$-::InCase(Map("\ −"))
+  ||Send("-")
+  
+$*::InCase(Map("\ ×"))
+  ||Send("*")
+  
+$/::InCase(Map("\ ÷", "/ ഽ")) ;InCase(Replace("\") with("÷"))
+  ||Send("/")
 
 ;The following rule is switch between Atomic and Sequence Chillu Characters
 $\::InCase(Map("ൻ\ ന്‍", "ൺ\ ണ്‍", "ർ\ ര്‍", "ൽ\ ല്‍", "ൾ\ ള്‍", "ൿ\ ക്‍", "റ്റ്\ ഺ"))
   ||InCase(Map("ന്‍\ ൻ", "ണ്‍\ ൺ", "ര്‍\ ർ", "ല്‍\ ൽ", "ള്‍\ ൾ", "ക്‍\ ൿ", "ഺ\ റ്റ്"))
+  ||InCase(Map("--- —", "-- –", "- −"))
   ||Send("\")
 
 $^::InCase(Map("ൻ ൹", "10 ൰", "100 ൱", "1000 ൲", "1/4 ൳", "1/2 ൴", "3/4 ൵"))
