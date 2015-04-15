@@ -35,7 +35,7 @@ return
 $_::InCase(After(ZWNJ) thenSend("$9")) ;To prevent repeated typing of ZWNJs. ($9 just avoids an InKey bug with empty strings)
   ||Send(ZWNJ) 
 
-$~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്"))
+$~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്", "ഋ റ്"))
   ||InCase(After(SetOfRegularLettersAndVowelSigns) thenSend("്"))
   ||Beep()
   
@@ -84,7 +84,7 @@ $i::InCase(Replace("$F") with("$Rി") usingMapChillu2Base)
 
 $o::InCase(Replace("$F") with("$Rൊ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഒ"))
-  ||InCase(Map("് ൊ ൂ", "ഒ ഊ", "@ ൊ"))
+  ||InCase(Map("് ൊ ൂ", "ഒ ഊ", "@ ൊ", "ഊ ഊഊ"))
   ||Send("ഒ")
 
 $u::InCase(Replace("$F") with("$Rു") usingMapChillu2Base)
