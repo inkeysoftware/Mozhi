@@ -32,8 +32,7 @@ OnLoadScript:	; InKeyLib will call this subroutine just once, when the script is
 return
 ;________________________________________________________________________________________________________________
 
-$_::InCase(Map("ക് ൿ", "ക ൿ"))
-  ||InCase(After(ZWNJ) thenSend("$9")) ;To prevent repeated typing of ZWNJs. ($9 just avoids an InKey bug with empty strings)
+$_::InCase(After(ZWNJ) thenSend("$9")) ;To prevent repeated typing of ZWNJs. ($9 just avoids an InKey bug with empty strings)
   ||Send(ZWNJ) 
 
 $~::InCase(Map("ൻ ന്", "ൺ ണ്", "ർ ര്", "ൽ ല്", "ൾ ള്", "ൿ ക്"))
