@@ -79,7 +79,7 @@ $e::InCase(Replace("$F") with("$Rെ") usingMapChillu2Base)
 $i::InCase(Replace("$F") with("$Rി") usingMapChillu2Base)
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൈ"))
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഇ"))
-  ||InCase(Map("് ി ീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ"))
+  ||InCase(Map("് ി ീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ", "ീ ീീ"))
   ||Send("ഇ")
 
 $o::InCase(Replace("$F") with("$Rൊ") usingMapChillu2Base)
