@@ -28,7 +28,8 @@ OnLoadScript:	; InKeyLib will call this subroutine just once, when the script is
 	usingMapChillu2Base := usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ")
 	SetOfLettersExceptSA := "[അ-ഷഹ]"
 	SetOfRegularLettersAndVowelSigns := "[അ-ഹഺാ-ൌൗൠ-ൣ]"
-	Chillu := "[ൺ-ൿ]"
+	Chillu := "[ൺ-ൿ]" ;No need for a ZWNJ between Chillu and Full letters. Keymagic Rule: $chills[*] + U200C + $cDirectSmallKeys[*] => $1 + $cDirectSmallValues[$3] + '്'
+
 	ZWNJ := Char(0x200C)
 return
 ;________________________________________________________________________________________________________________
@@ -52,7 +53,11 @@ $/::InCase(Map("\ ÷", "/ ഽ //"))
 ;The following rule is switch between Atomic and Sequence Chillu Characters
 $\::InCase(Map("ൻ\ ന്‍", "ൺ\ ണ്‍", "ർ\ ര്‍", "ൽ\ ല്‍", "ൾ\ ള്‍", "ൿ\ ക്‍", "റ്റ്\ ഺ"))
   ||InCase(Map("ന്‍\ ൻ", "ണ്‍\ ൺ", "ര്‍\ ർ", "ല്‍\ ൽ", "ള്‍\ ൾ", "ക്‍\ ൿ", "ഺ\ റ്റ്"))
+
+  ;To directly keying vowel signs  
   ||InCase(Map("മ്\ ം", "ആ\ ാ", "ഇ\ ി", "ഈ\ ീ", "ഉ\ ു", "ഊ\ ൂ", "ഋ\ ൃ", "ൠ\ ൄ", "എ\ െ", "ഏ\ േ", "ഐ\ ൈ", "ഒ\ ൊ", "ഓ\ ോ", "ഔ\ ൗ"))
+
+  ;Dashes  
   ||InCase(Map("--- —", "-- –", "- −"))
   ||Send("\")
 
