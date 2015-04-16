@@ -200,56 +200,76 @@ $w::InCase(Map("ൺ ണ്വ്", "ൻ ന്വ്", "ൽ ല്വ്", "ൿ 
   ||InCase(After(Chillu) Replace(ZWNJ) with("വ്"))
   ||Send("വ്")
 
-$x::Send("ക്ഷ്")
+$x::InCase(After(Chillu) Replace(ZWNJ) with("ക്ഷ്"))
+  ||Send("ക്ഷ്")
 
 $y::InCase(After("[അ-ഷഹാ-ൌൗൢൣ]") Replace("ം") with("മ്യ്")) ; After cons (except SA) or vowel signs
   ||InCase(Replace("$F") with("$R്യ്") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("യ്"))
   ||Send("യ്")
 
-$z::Send("ശ്")
+$z::InCase(After(Chillu) Replace(ZWNJ) with("ശ്"))
+  ||Send("ശ്")
 
 
-$+b::Send("ബ്ബ്")
+$+b::InCase(After(Chillu) Replace(ZWNJ) with("ബ്ബ്"))
+  ||Send("ബ്ബ്")
 
-$+c::Send("ച്ച്")
+$+c::InCase(After(Chillu) Replace(ZWNJ) with("ച്ച്"))
+  ||Send("ച്ച്")
 
-$+d::InCase(Map("ൺ ണ്ഡ്")) 
+$+d::InCase(After(Chillu) Replace(ZWNJ) with("ഡ്"))
+  ||InCase(Map("ൺ ണ്ഡ്")) 
   ||InCase(After("ൺ") Replace(ZWNJ) with("ഡ്"))
   ||Send("ഡ്")
 
-$+f::Send("ഫ്")
+$+f::InCase(After(Chillu) Replace(ZWNJ) with("ഫ്"))
+  ||Send("ഫ്")
 
-$+g::Send("ഗ്ഗ്")
+$+g::InCase(After(Chillu) Replace(ZWNJ) with("ഗ്ഗ്"))
+  ||Send("ഗ്ഗ്")
 
 $+h::Send("ഃ")
 
-$+j::Send("ജ്ജ്")
+$+j::InCase(After(Chillu) Replace(ZWNJ) with("ജ്ജ്"))
+  ||Send("ജ്ജ്")
 
-$+k::Send("ക്ക്")
+$+k::InCase(After(Chillu) Replace(ZWNJ) with("ക്ക്"))
+  ||Send("ക്ക്")
 
-$+m::Send("മ്മ്") 
+$+m::InCase(After(Chillu) Replace(ZWNJ) with("യ്"))
+  ||Send("മ്മ്") 
 
 $+n::InCase(After("ൺ") Replace(ZWNJ) with("ണ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ൺ"))
   ||InCase(Replace("ൺ") with("ണ്ണ്"))
   ||Send("ൺ")
 
-$+p::Send("പ്പ്")
+$+p::InCase(After(Chillu) Replace(ZWNJ) with("പ്പ്"))
+  ||Send("പ്പ്")
 
-$+q::Send("ക്യു")
+$+q::InCase(After(Chillu) Replace(ZWNJ) with("ക്യു"))
+  ||Send("ക്യു")
 
-$+s::Send("ശ്")
+$+s::InCase(After(Chillu) Replace(ZWNJ) with("ശ്"))
+  ||Send("ശ്")
 
 $+t::InCase(Map("ൺ ണ്ട്"))
-  ||InCase(After("ൺ") Replace(ZWNJ) with("ട്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ട്"))
   ||Send("ട്")
 
-$+v::Send("വ്വ്")
+$+w::
+$+v::InCase(After(Chillu) Replace(ZWNJ) with("വ്വ്"))
+  ||Send("വ്വ്")
 
-$+x::Send("ക്ഷ്")
+$+x::InCase(After(Chillu) Replace(ZWNJ) with("ക്ഷ്"))
+  ||Send("ക്ഷ്")
 
-$+y::Send("യ്യ്")
+$+y::InCase(After(Chillu) Replace(ZWNJ) with("യ്യ്"))
+  ||Send("യ്യ്")
 
-$+z::Send("ശ്ശ്")
+$+z::InCase(After(Chillu) Replace(ZWNJ) with("ശ്ശ്"))
+  ||Send("ശ്ശ്")
 
 $0::InCase(Map("\ ൦"))
   ||InCase(After("[൦-൯]") thenSend("൦"))
