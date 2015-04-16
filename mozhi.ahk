@@ -69,6 +69,7 @@ $a::InCase(Map("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക",
 $+a::InCase(Map("് ാ", "ഋ റാ","@ ാ"))
   ||InCase(Replace("$F") with("$Rാ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ആ"))  
+  ||InCase(After("ാ") thenSend("‍ാ"))  ; attempts to allow multiple occurrences, but may render badly
   ||Send("ആ")
   
 $e::InCase(Replace("$F") with("$Rെ") usingMapChillu2Base)
@@ -79,43 +80,43 @@ $e::InCase(Replace("$F") with("$Rെ") usingMapChillu2Base)
 $i::InCase(Replace("$F") with("$Rി") usingMapChillu2Base)
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൈ"))
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഇ"))
-  ||InCase(Map("് ി ീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ", "ീ ീീ"))
+  ||InCase(Map("് ി ീ ീീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ"))
   ||Send("ഇ")
 
 $o::InCase(Replace("$F") with("$Rൊ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഒ"))
-  ||InCase(Map("് ൊ ൂ", "ഒ ഊ", "@ ൊ", "ഊ ഊഊ"))
+  ||InCase(Map("് ൊ ൂ ൂൂ", "ഒ ഊ", "@ ൊ", "ഊ ഊഊ"))
   ||Send("ഒ")
 
 $u::InCase(Replace("$F") with("$Rു") usingMapChillu2Base)
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൗ"))  ; KMN uses 0d4c instead
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഉ"))
-  ||InCase(Map("് ു ൂ", "ഉ ഊ", "അ ഔ", "ഒ ഔ", "@ ു", "ാ ൗ"))
+  ||InCase(Map("് ു ൂ ൂൂ", "ഉ ഊ", "അ ഔ", "ഒ ഔ", "@ ു", "ാ ൗ ൗൗ"))
   ||Send("ഉ")
 
 $+e::InCase(Replace("$F") with("$Rേ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഏ"))
-  ||InCase(Map("് േ", "@ േ"))
+  ||InCase(Map("് േ േേ", "@ േ"))
   ||Send("ഏ")
 
 $+i::InCase(Replace("$F") with("$Rീ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഐ"))
-  ||InCase(Map("് ീ", "@ ീ"))
+  ||InCase(Map("് ീ ീീ", "@ ീ"))
   ||Send("ഐ")
 
 $+o::InCase(Replace("$F") with("$Rോ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഓ"))
-  ||InCase(Map("് ോ", "@ ോ"))
+  ||InCase(Map("് ോ ോോ", "@ ോ"))
   ||Send("ഓ")
 
 $+u::InCase(Replace("$F") with("$Rൂ") usingMapChillu2Base)
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഊ"))
-  ||InCase(Map("് ൂ", "@ ൂ"))
+  ||InCase(Map("് ൂ ൂൂ", "@ ൂ"))
   ||Send("ഊ")
 
 $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഋ"))
-  ||InCase(Map("് ൃ ൄ", "@ ൃ", "ഋ ൠ"))
+  ||InCase(Map("് ൃ ൄ ൄൄ", "@ ൃ", "ഋ ൠ"))
   ||Send("ഋ")
   
 $l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്"))  
