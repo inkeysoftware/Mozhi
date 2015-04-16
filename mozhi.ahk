@@ -62,7 +62,7 @@ $a::InCase(Map("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക",
   ||InCase(Replace("്") with("$9")) ; workaround for InKey bug that doesn't like empty strings
   ||InCase(After("[ക-ഹ]") thenSend("ാ"))
   ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("അ"))  
-  ||InCase(After("‍ാ") thenSend("‍ാ"))  ; attempts to allow multiple occurrences, but may render badly
+  ||InCase(After("ാ") thenSend("‍ാ"))  ; attempts to allow multiple occurrences, but may render badly
   ||InCase(Map("അ ആ ആ‍ാ", "@ ാ"))
   ||Send("അ")
 
