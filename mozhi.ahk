@@ -28,6 +28,7 @@ OnLoadScript:	; InKeyLib will call this subroutine just once, when the script is
 	usingMapChillu2Base := usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ")
 	SetOfLettersExceptSA := "[അ-ഷഹ]"
 	SetOfRegularLettersAndVowelSigns := "[അ-ഹഺാ-ൌൗൠ-ൣ]"
+	Chillu := "[ൺ-ൿ]"
 	ZWNJ := Char(0x200C)
 return
 ;________________________________________________________________________________________________________________
@@ -45,12 +46,13 @@ $-::InCase(Map("\ −"))
 $*::InCase(Map("\ ×"))
   ||Send("*")
   
-$/::InCase(Map("\ ÷", "/ ഽ")) 
+$/::InCase(Map("\ ÷", "/ ഽ //")) 
   ||Send("/")
 
 ;The following rule is switch between Atomic and Sequence Chillu Characters
 $\::InCase(Map("ൻ\ ന്‍", "ൺ\ ണ്‍", "ർ\ ര്‍", "ൽ\ ല്‍", "ൾ\ ള്‍", "ൿ\ ക്‍", "റ്റ്\ ഺ"))
   ||InCase(Map("ന്‍\ ൻ", "ണ്‍\ ൺ", "ര്‍\ ർ", "ല്‍\ ൽ", "ള്‍\ ൾ", "ക്‍\ ൿ", "ഺ\ റ്റ്"))
+  ||InCase(Map("മ്\ ം", "ആ\ ാ", "ഇ\ ി", "ഈ\ ീ", "ഉ\ ു", "ഊ\ ൂ", "ഋ\ ൃ", "ൠ\ ൄ", "എ\ െ", "ഏ\ േ", "ഐ\ ൈ", "ഒ\ ൊ", "ഓ\ ോ", "ഔ\ ൗ"))
   ||InCase(Map("--- —", "-- –", "- −"))
   ||Send("\")
 
@@ -61,116 +63,120 @@ $^::InCase(Map("ൻ ൹", "10 ൰", "100 ൱", "1000 ൲", "1/4 ൳", "1/2 ൴",
 $a::InCase(Map("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ", "ഋ റ"))
   ||InCase(Replace("്") with("$9")) ; workaround for InKey bug that doesn't like empty strings
   ||InCase(After("[ക-ഹ]") thenSend("ാ"))
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("അ"))  
+  ||InCase(After(Chillu) Replace(ZWNJ) with("അ"))  
   ||InCase(After("ാ") thenSend("‍ാ"))  ; attempts to allow multiple occurrences, but may render badly
   ||InCase(Map("അ ആ ആ‍ാ", "@ ാ"))
   ||Send("അ")
 
 $+a::InCase(Map("് ാ", "ഋ റാ","@ ാ"))
   ||InCase(Replace("$F") with("$Rാ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ആ"))  
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ആ"))  
   ||InCase(After("ാ") thenSend("‍ാ"))  ; attempts to allow multiple occurrences, but may render badly
   ||Send("ആ")
   
 $e::InCase(Replace("$F") with("$Rെ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("എ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("എ"))
   ||InCase(Map("് െ ീ", "എ ഈ", "@ െ"))
   ||Send("എ")
 
 $i::InCase(Replace("$F") with("$Rി") usingMapChillu2Base)
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൈ"))
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഇ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഇ"))
   ||InCase(Map("് ി ീ ീീ", "ഇ ഈ", "അ ഐ", "@ ി", "ാ ൈ"))
   ||Send("ഇ")
 
 $o::InCase(Replace("$F") with("$Rൊ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഒ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഒ"))
   ||InCase(Map("് ൊ ൂ ൂൂ", "ഒ ഊ", "@ ൊ", "ഊ ഊഊ"))
   ||Send("ഒ")
 
 $u::InCase(Replace("$F") with("$Rു") usingMapChillu2Base)
   ||InCase(After("[ക-ഹൺ-ൿ]") thenSend("ൗ"))  ; KMN uses 0d4c instead
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഉ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഉ"))
   ||InCase(Map("് ു ൂ ൂൂ", "ഉ ഊ", "അ ഔ", "ഒ ഔ", "@ ു", "ാ ൗ ൗൗ"))
   ||Send("ഉ")
 
 $+e::InCase(Replace("$F") with("$Rേ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഏ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഏ"))
   ||InCase(Map("് േ േേ", "@ േ"))
   ||Send("ഏ")
 
 $+i::InCase(Replace("$F") with("$Rീ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഐ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഐ"))
   ||InCase(Map("് ീ ീീ", "@ ീ"))
   ||Send("ഐ")
 
 $+o::InCase(Replace("$F") with("$Rോ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഓ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഓ"))
   ||InCase(Map("് ോ ോോ", "@ ോ"))
   ||Send("ഓ")
 
 $+u::InCase(Replace("$F") with("$Rൂ") usingMapChillu2Base)
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഊ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഊ"))
   ||InCase(Map("് ൂ ൂൂ", "@ ൂ"))
   ||Send("ഊ")
 
 $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ൿ ക", "ം മ"))
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("ഋ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഋ"))
   ||InCase(Map("് ൃ ൄ ൄൄ", "@ ൃ", "ഋ ൠ"))
   ||Send("ഋ")
   
 $l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്"))  
-  ||InCase(After("[ൽൾൿ]") Replace(ZWNJ) with("ല്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ല്"))
   ||InCase(Map("ൽ ല്ല്", "@ ൢ", "ൿ ക്ല്", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
   ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള", "ം മ"))
   ||Send("ൽ")
 
 $+l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്")) 
-  ||InCase(After("[ൻൽൾൿ]") Replace(ZWNJ) with("ല്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ല്"))
   ||InCase(Map("ൾ ള്ള്", "ൻ ന്ല്", "ൽ ല്ല്", "ൿ ക്ല്")) 
   ||Send("ൾ")
 
 
 
 
-$b::Send("ബ്")
+$b::InCase(After(Chillu) Replace(ZWNJ) with("ബ്"))
+  ||Send("ബ്")
 
 $c::InCase(Map("ൿ ക്ക്"))
-  ||InCase(After("ൿ") Replace(ZWNJ) with("ക്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ക്"))
   ||Send("ൿ")
 
 $d::InCase(Map("ൻ ന്ദ്"))
-  ||InCase(After("ൻ") Replace(ZWNJ) with("ദ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ദ്"))
   ||Send("ദ്")
 
-$f::Send("ഫ്")
+$f::InCase(After(Chillu) Replace(ZWNJ) with("ഫ്"))
+  ||Send("ഫ്")
 
 $g::InCase(Map("ൻ ങ്", "ന് ങ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഗ്"))
   ||Send("ഗ്")
 
 $h::InCase(Map("ൻൿ ഞ്ച്", "ന്റ് ന്ത്", "ൿ ച്", "ക് ഖ്", "ക്ക് ച്ച്", "ഗ് ഘ്", "ച് ഛ്", "ജ് ഝ്", "ട് ഠ്", "ഡ് ഢ്", "റ്റ് ത് ഥ്", "ദ് ധ്", "പ് ഫ്", "ബ് ഭ്", "സ് ഷ്", "ശ് ഴ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഹ്"))
   ||Send("ഹ്")
 
 $j::InCase(Map("ൻ ഞ്", "ന് ഞ്"))
-  ||InCase(After("ൻ") Replace(ZWNJ) with("ജ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ജ്"))
   ||Send("ജ്")
 
 $k::InCase(Map("ൻ ങ്ക്", "ന് ങ്ക്", "ൿ ക്ക്"))
-  ||InCase(After("[ൻൿ]") Replace(ZWNJ) with("ക്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ക്"))
   ||Send("ക്")
 
 $m::InCase(After(SetOfRegularLettersAndVowelSigns) thenSend("ം"))
-  ||InCase(After("[ൺൻ]") Replace(ZWNJ) with("മ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("മ്"))
   ||InCase(Map("ം മ്മ്", "ൺ ണ്മ്", "ൻ ന്മ്"))
   ||Send("മ്")
 
 $n::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ന്")) 
-  ||InCase(After("ൻ") Replace(ZWNJ) with("ന്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ന്"))
   ||Incase(Replace("ൻ") with("ന്ന്"))
   ||Send("ൻ")
 
 $p::InCase(Map("ം മ്പ്", "ൽ ല്പ്"))
-  ||InCase(After("ൽ") Replace(ZWNJ) with("പ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("പ്"))
   ||Send("പ്")
 
 $q::Send("ക്ക്")
@@ -178,18 +184,20 @@ $q::Send("ക്ക്")
 $r::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ര്")) 
   ||InCase(After("ൻ") Replace(ZWNJ) with("ര്"))
   ||InCase(After("ർ") Replace(ZWNJ) with("റ്"))
+;  ||InCase(After(Chillu) Replace(ZWNJ) with("")) ; what is the best replacement char here??? 
   ||InCase(Map("ൻ ന്ര്", "ർ റ്"))
   ||Send("ർ")
 
-$s::Send("സ്")
+$s::InCase(After(Chillu) Replace(ZWNJ) with("സ്"))
+  ||Send("സ്")
 
 $t::InCase(Map("റ്റ് ട്ട്", "ൻ ന്റ്", "ന് ന്റ്"))
-  ||InCase(After("ൻ") Replace(ZWNJ) with("റ്റ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("റ്റ്"))
   ||Send("റ്റ്")
 
 $v::
 $w::InCase(Map("ൺ ണ്വ്", "ൻ ന്വ്", "ൽ ല്വ്", "ൿ ക്വ്"))
-  ||InCase(After("[ൺൻൽൿ]") Replace(ZWNJ) with("വ്"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("വ്"))
   ||Send("വ്")
 
 $x::Send("ക്ഷ്")
