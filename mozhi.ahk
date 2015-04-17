@@ -138,7 +138,7 @@ $+l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്"))
   ||InCase(Map("ൾ ള്ള്", "ൻ ന്ല്", "ൽ ല്ല്", "ൿ ക്ല്")) 
   ||Send("ൾ")
 
-  $b::InCase(After(Chillu) Replace(ZWNJ) with("ബ്"))
+$b::InCase(After(Chillu) Replace(ZWNJ) with("ബ്"))
   ||Send("ബ്")
 
 $c::InCase(Map("ൿ ക്ക്"))
