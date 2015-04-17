@@ -248,7 +248,7 @@ $+j::InCase(After(Chillu) Replace(ZWNJ) with("ജ്ജ്"))
 $+k::InCase(After(Chillu) Replace(ZWNJ) with("ക്ക്"))
   ||Send("ക്ക്")
 
-$+m::InCase(After(Chillu) Replace(ZWNJ) with("യ്"))
+$+m::InCase(After(Chillu) Replace(ZWNJ) with("മ്മ്"))
   ||Send("മ്മ്") 
 
 $+n::InCase(After("ൺ") Replace(ZWNJ) with("ണ്"))
