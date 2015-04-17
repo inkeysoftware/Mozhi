@@ -109,9 +109,9 @@ $+e::InCase(Replace("$F") with("$Rേ") usingMapChillu2Base)
   ||Send("ഏ")
 
 $+i::InCase(Replace("$F") with("$Rീ") usingMapChillu2Base)
-  ||InCase(After(Chillu) Replace(ZWNJ) with("ഐ"))
+  ||InCase(After(Chillu) Replace(ZWNJ) with("ഈ"))
   ||InCase(Map("് ീ ീീ", "ൃ ്രീ", "@ ീ"))
-  ||Send("ഐ")
+  ||Send("ഈ")
 
 $+o::InCase(Replace("$F") with("$Rോ") usingMapChillu2Base)
   ||InCase(After(Chillu) Replace(ZWNJ) with("ഓ"))
