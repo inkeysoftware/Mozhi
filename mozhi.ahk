@@ -29,7 +29,6 @@ OnLoadScript:	; InKeyLib will call this subroutine just once, when the script is
 	SetOfLettersExceptSA := "[അ-ഷഹ]"
 	SetOfRegularLettersAndVowelSigns := "[അ-ഹഺാ-ൌൗൠ-ൣ]"
 	Chillu := "[ൺ-ൿ]" ;No need for a ZWNJ between Chillu and Full letters. Keymagic Rule: $chills[*] + U200C + $cDirectSmallKeys[*] => $1 + $cDirectSmallValues[$3] + '്'
-
 	ZWNJ := Char(0x200C)
 return
 ;________________________________________________________________________________________________________________
@@ -129,7 +128,6 @@ $+r::InCase(Replace("$F") with("$Rൃ") usingMap("ൻ ന", "ൺ ണ", "ർ ര"
   ||Send("ഋ")
   
 $l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്")) 
-;  ||InCase(After("സ") Replace("ം") with("ൽ")) ;check with dan. 
   ||InCase(After(Chillu) Replace(ZWNJ) with("ല്"))
   ||InCase(Map("ൽ ല്ല്", "@ ൢ", "ൿ ക്ല്", "ൾ ഌ ൡ"))  ; "് ൢ ൣ", 
   ||InCase(Replace("$F") with("$Rൢ") usingMap("ൻ ന", "ൺ ണ", "ർ ര", "ൽ ല", "ൾ ള")) 
@@ -139,9 +137,6 @@ $+l::InCase(After(SetOfLettersExceptSA) Replace("ം") with("മ്ല്"))
   ||InCase(After(Chillu) Replace(ZWNJ) with("ല്"))
   ||InCase(Map("ൾ ള്ള്", "ൻ ന്ല്", "ൽ ല്ല്", "ൿ ക്ല്")) 
   ||Send("ൾ")
-
-
-
 
 $b::InCase(After(Chillu) Replace(ZWNJ) with("ബ്"))
   ||Send("ബ്")
@@ -218,7 +213,6 @@ $y::InCase(After("[അ-ഷഹാ-ൌൗൢൣ]") Replace("ം") with("മ്യ�
 
 $z::InCase(After(Chillu) Replace(ZWNJ) with("ശ്"))
   ||Send("ശ്")
-
 
 $+b::InCase(After(Chillu) Replace(ZWNJ) with("ബ്ബ്"))
   ||Send("ബ്ബ്")
